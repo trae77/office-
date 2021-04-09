@@ -172,13 +172,91 @@ function update (){
         "update firstname",
         "update lastname",
         "update roleId",
-        "update managerId"
-      ])
+        "update managerId",
+      ]
+    }
+    ])
       .then((data) => {
         switch (data.update) {
-          case "view department":
+          case "update firstname":
+           
+            inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "firstName",
+        message: "what is the first name of the employee",
+      }  ])
+      .then((data) => {
+            connection.query(
+              " INSERT INTO employee SET ?",
+              {
+                first_name: data.firstName,
+              },
+              function (err, res) {
+                console.table(data);
+                start();
+              }
+            )})
+            break;
 
-}
+            case "update lastname":
+              inquirer
+              .prompt([
+                {
+                  type: "input",
+                  name: "firstName",
+                  message: "what is the last name of the employee",
+                }  ])
+                .then((data) => {
+                      connection.query(
+                        " INSERT INTO employee SET ?",
+                        {
+                          last_name: data.lastName,
+                        },
+                        function (err, res) {
+                          console.table(data);
+                          start();
+                        }
+                      )})
+              break;
+
+              case "update managerId":
+                connection.query(
+                  " INSERT INTO employee SET ?",
+                  {
+                    manager_id: data.managerId,
+                  },
+                  function (err, res) {
+                    console.table(data);
+                    start();
+                  }
+                )
+                break;
+
+                case "update roleid":
+                  inquirer
+                  .prompt([
+                    {
+                      type: "input",
+                      name: "roleId",
+                      message: "what is the role id of the employee",
+                    }  ])
+                    .then((data) => {
+                          connection.query(
+                            " INSERT INTO employee SET ?",
+                            {
+                              role_id: data.roleId
+                            },
+                            function (err, res) {
+                              console.table(data);
+                              start();
+                            }
+                          )})
+                  break;
+      }})
+    }
+      
 start()
 
 // UPDATE people
