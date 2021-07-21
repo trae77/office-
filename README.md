@@ -19,7 +19,6 @@
   npm mysql
   npm console.table
 
-  <img alt="screenshot of app in use" src="./images/et.jpg">
 
   ## Usage
   * clone to your local machine
